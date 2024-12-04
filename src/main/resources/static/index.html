@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculator</title>
+    <script>
+        async function calculate(operation) {
+            const a = parseFloat(document.getElementById('a').value);
+            const b = parseFloat(document.getElementById('b').value);
+            const response = await fetch(`/${operation}?a=${a}&b=${b}`);
+            const result = await response.text();
+            document.getElementById('result').textContent = `Result: ${result}`;
+        }
+    </script>
+</head>
+<body>
+<h1>Calculator</h1>
+<input id="a" type="number" placeholder="Enter first number">
+<input id="b" type="number" placeholder="Enter second number">
+<button onclick="calculate('add')">Add</button>
+<button onclick="calculate('subtract')">Subtract</button>
+<button onclick="calculate('multiply')">Multiply</button>
+<button onclick="calculate('divide')">Divide</button>
+<h3 id="result">Result: </h3>
+</body>
+</html>
